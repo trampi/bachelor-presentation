@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="styles/bootstrap.min.css">
+        <link rel="stylesheet" href="styles/bootstrap-theme.min.css">
+        <script src="scripts/jquery-1.11.0.min.js"></script>
+        <script src="scripts/jquery-migrate-1.2.1.min.js"></script>
+        <script src="scripts/bootstrap.min.js"></script>
+        <script src="scripts/angular.js"></script>
+        <script src="scripts/angular-route.js"></script>
+        <title>Beispiel 3</title>
+    </head>
+    <body ng-app="app" class="container col-xs-12">
+        <div class="jumbotron" ng-controller="ItemController">
+            <form>
+                <div class="input-group">
+                    <input ng-model="user.name" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button ng-click="greet()" ng-disabled="!user.name" class="btn btn-default" type="submit">Begrüßen</button>
+                    </span>
+                </div><!-- /input-group -->
+            </form>
+        </div>
+        <script type="text/javascript">
+            function ItemController($scope, greeter) {
+                $scope.greet = function() {
+                    var name = $scope.user.name;
+                    greeter.greet(name);
+                };
+            }
+            
+            function GreeterService() {
+                this.greet = function(text) {
+                    alert("Hi " + text);
+                };
+            };
+            
+            var app = angular.module("app", []);
+            app.controller("ItemController", ItemController);
+            app.service("greeter", GreeterService);
+        </script>
+    </body>
+</html>

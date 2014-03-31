@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="styles/bootstrap.min.css">
+        <link rel="stylesheet" href="styles/bootstrap-theme.min.css">
+        <script src="scripts/jquery-1.11.0.min.js"></script>
+        <script src="scripts/jquery-migrate-1.2.1.min.js"></script>
+        <script src="scripts/bootstrap.min.js"></script>
+        <script src="scripts/angular.js"></script>
+        <script src="scripts/angular-route.js"></script>
+        <title>Beispiel 2</title>
+    </head>
+    <body ng-app class="container col-xs-12">
+        <div class="jumbotron" ng-controller="ItemController">
+            <form>
+                <div class="input-group">
+                    <input ng-model="user.name" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button ng-click="add()" ng-disabled="!user.name" class="btn btn-default" type="submit">Eintragen</button>
+                    </span>
+                </div><!-- /input-group -->
+            </form>
+            
+            <ul>
+                <li ng-repeat="user in users">{{user.name}}</li>
+                <li ng-show="users.length == 0">Keine Einträge vorhanden</li>
+            </ul>
+            
+            <input placeholder="Suche" type="text" class="form-control">
+        </div>
+        <script type="text/javascript">
+            function ItemController($scope) {
+                $scope.users = [];
+                $scope.add = function() {
+                    $scope.users.push({name: $scope.user.name});
+                    $scope.user.name = "";
+                };
+            }
+        </script>
+    </body>
+</html>

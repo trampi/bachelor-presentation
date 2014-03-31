@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="styles/bootstrap.min.css">
+        <script src="scripts/angular.js"></script>
+        <title>Beispiel 1</title>
+    </head>
+    <body ng-app class="container col-xs-12">
+        <div class="jumbotron">
+            <form>
+                <input ng-model="name" placeholder="Name eingeben" type="text" class="form-control">
+            </form>
+            <p ng-show="name">Hallo {{name}}!</p>
+        </div>
+    </body>
+</html>
